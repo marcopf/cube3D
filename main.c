@@ -6,15 +6,18 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:28 by marco             #+#    #+#             */
-/*   Updated: 2023/05/06 14:31:53 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/06 15:16:41 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3D.h"
 
-int main(int argc, char **argv)
+int	main(void)
 {
-    if (argc == 0 && argv == 0)
-        return (1);
-    printf("hey\n");
+	void	*mlx;
+	void	*mlx_win;
+
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 640, 350, "Hello world!");
+	mlx_loop(mlx);
 }
