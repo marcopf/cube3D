@@ -6,7 +6,7 @@
 #    By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/06 14:12:38 by marco             #+#    #+#              #
-#    Updated: 2023/05/09 14:47:02 by mpaterno         ###   ########.fr        #
+#    Updated: 2023/05/09 16:03:13 by mpaterno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,8 +61,8 @@ clean:
 	@printf "$(RED)Object files removed\n$(RESET)"
 	
 fclean: clean
-	@rm libmlx.dylib
 	@make -C libft fclean
+	@rm -f libmlx.dylib
 	@printf "$(RED)\nRemoving program executable...\n$(RESET)"
 	@printf "$(BLUE)-------------------------------------------------------------------------\n$(RESET)"
 	@$(RM) $(NAME)

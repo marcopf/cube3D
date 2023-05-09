@@ -6,7 +6,7 @@
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:28 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 15:00:02 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:59:03 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,8 @@ int	main(int argc, char **argv)
 		return (printf("Error: Invalid map\n"));
 	// init_game(&game);
 	// mlx_loop(game.mlx);
+	game.mlx = mlx_init();
+	game.mlx_win = mlx_new_window(game.mlx, 640, 350, "Hello world!");
+	mlx_loop(game.mlx);
 	return (0);
 }

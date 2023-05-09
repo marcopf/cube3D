@@ -6,7 +6,7 @@
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:23:50 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/09 14:49:04 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:39:30 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,24 @@ int	check_side(t_game *game, int x, int y)
 	return (1);
 }
 
+int	check_diag(t_game *game, int x, int y)
+{
+	if ((x + 1 <= game->map.width - 1 && y + 1 <= game->map.height - 1)
+		&& (game->map.map[y + 1][x + 1] != '1'
+		&& game->map.map[y + 1][x + 1] != ' '))
+		return (0);
+	if ((x - 1 >= 0 && y - 1 >= 0)
+		&& (game->map.map[y - 1][x - 1] != '1' && game->map.map[y - 1][x - 1] != ' '))
+		return (0);
+	if ((y + 1 <= game->map.height - 1 && x - 1 >= 0)
+		&& (game->map.map[y + 1][x - 1] != '1' && game->map.map[y + 1][x - 1] != ' '))
+		return (0);
+	if ((y - 1 >= 0 && x + 1 <= game->map.width - 1)
+		&& (game->map.map[y - 1][x + 1] != '1' && game->map.map[y - 1][x + 1] != ' '))
+		return (0);
+	return (1);
+}
+
 int	space_check(t_game *game)
 {
 	int	x;
@@ -41,6 +59,8 @@ int	space_check(t_game *game)
 		while (game->map.map[y][++x])
 		{
 			if (game->map.map[y][x] == ' ' && !check_side(game, x, y))
+				return (-1);
+			if (game->map.map[y][x] == ' ' && !check_diag(game, x, y))
 				return (-1);
 		}
 	}
