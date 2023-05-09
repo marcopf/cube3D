@@ -6,13 +6,13 @@
 #    By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/06 14:12:38 by marco             #+#    #+#              #
-#    Updated: 2023/05/09 10:47:50 by mpaterno         ###   ########.fr        #
+#    Updated: 2023/05/09 12:25:56 by mpaterno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= cub3D
 
-SRC			= main.c $(wildcard get_next_line/*.c)
+SRC			= main.c $(wildcard get_next_line/*.c) $(wildcard parser/*.c)
 
 OBJ		= $(SRC:%.c=%.o)
 

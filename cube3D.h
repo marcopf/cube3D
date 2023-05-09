@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <fcntl.h>
 # include "mlx/mlx.h"
 # include "libft/libft.h"
 # include "get_next_line/get_next_line.h"
@@ -31,20 +32,6 @@ typedef struct s_image {
 	int		line_length;
 	int		endian;
 }				t_image;
-
-typedef struct s_game
-{
-	void		*mlx;
-	void		*mlx_win;
-	int			width;
-	int			height;
-	t_map		map;
-	t_minimap	minimap;
-	t_player	player;
-	t_raycast	raycast;
-	t_image		image;
-	t_image		screen;
-}	t_game;
 
 typedef struct s_vector
 {
@@ -92,6 +79,21 @@ typedef struct s_player
 	t_vector	dir;
 	double		rot_dir;
 }	t_player;
+typedef struct s_game
+{
+	void		*mlx;
+	void		*mlx_win;
+	int			width;
+	int			height;
+	t_map		map;
+	t_minimap	minimap;
+	t_player	player;
+	t_raycast	raycast;
+	t_image		image;
+}	t_game;
+
+int	map_converter(t_game *game, char *path);
+int border_check(t_game *game);
 
 /*Init*/
 void	init_game(t_game *game);
