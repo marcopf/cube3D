@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afraccal <afraccal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:39:41 by afraccal          #+#    #+#             */
-/*   Updated: 2023/05/09 14:26:22 by afraccal         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:49:26 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void	init_minimap(t_game *game)
 
 void	init_game(t_game *game)
 {	
-	game->mlx = mlx_init();
-	game->mlx_win = mlx_new_window (game->mlx, WIDTH, HEIGHT, NAME);
-	game->screen.img = mlx_new_image (game->mlx, WIDTH, HEIGHT);
-	game->screen.addr = mlx_get_data_addr (game->screen.img,
-			game->screen.bits_per_pixel, game->screen.line_length,
-			game->screen.endian);
-	init_minimap(game);
+	// game->mlx = mlx_init();
+	// game->mlx_win = mlx_new_window (game->mlx, WIDTH, HEIGHT, NAME);
+	// game->screen.img = mlx_new_image (game->mlx, WIDTH, HEIGHT);
+	// game->screen.addr = mlx_get_data_addr (game->screen.img,
+	// 		game->screen.bits_per_pixel, game->screen.line_length,
+	// 		game->screen.endian);
+	// init_minimap(game);
 }

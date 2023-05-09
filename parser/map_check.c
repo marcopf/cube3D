@@ -6,11 +6,11 @@
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:23:50 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/09 14:40:27 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:49:04 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube3d.h"
+#include "../cube3D.h"
 
 int	check_side(t_game *game, int x, int y)
 {

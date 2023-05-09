@@ -6,11 +6,25 @@
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:54:52 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/09 14:13:42 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:00:13 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3D.h"
+
+int	arg_check(int argc, char **argv)
+{
+	int	i;
+
+	i = ft_strlen (argv[1]) - 4;
+	if (i < 0)
+		return (printf ("Estensione file errata\n") * 0);
+	if (argc < 2 || argc > 2)
+		return (printf ("Numero argomenti sbagliato\n") * 0);
+	if (ft_strncmp(argv[1] + i, ".cub", 4))
+		return (printf ("Estensione file errata\n") * 0);
+	return (1);
+}
 
 int	count_line(t_game *game, char *path)
 {

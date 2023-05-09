@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3D.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afraccal <afraccal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 14:25:00 by afraccal         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:00:59 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,9 @@ typedef struct s_game
 	t_image		image;
 }	t_game;
 
-int	map_converter(t_game *game, char *path);
-int border_check(t_game *game);
+int		map_converter(t_game *game, char *path);
+int		border_check(t_game *game);
+int		arg_check(int argc, char **argv);
 
 /*Init*/
 void	init_game(t_game *game);
