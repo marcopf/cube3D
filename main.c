@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:28 by marco             #+#    #+#             */
-/*   Updated: 2023/05/08 16:06:10 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/08 22:35:23 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,74 @@ void	draw_line(t_env *env, float x0, float y0, float x, float y)
 	}
 }
 
+void tester(t_env *env, float x, float y, float pdx, float pdy)
+{
+	//which box of the map we're in
+    int mapX = (int)(x / 31.0);
+    int mapY = (int)(y / 31.0);
+	float rayDirX = x + pdx;
+	float rayDirY = y + pdy;
+
+      //length of ray from current position to next x or y-side
+    double sideDistX;
+    double sideDistY;
+
+       //length of ray from one x or y-side to next x or y-side
+    double deltaDistX = (rayDirX == 0) ? 1e30 : fabs(1 / rayDirX);
+    double deltaDistY = (rayDirY == 0) ? 1e30 : fabs(1 / rayDirY);
+    double perpWallDist;
+
+      //what direction to step in x or y-direction (either +1 or -1)
+    int stepX;
+    int stepY;
+
+    int hit = 0; //was there a wall hit?
+    int side; //was a NS or a EW wall hit?
+	if (rayDirX < 0)
+    {
+    	stepX = -1;
+        sideDistX = (x - mapX) * deltaDistX;
+    }
+    else
+    {
+      stepX = 1;
+      sideDistX = (mapX + 1.0 - x) * deltaDistX;
+    }
+    if (rayDirY < 0)
+    {
+      stepY = -1;
+      sideDistY = (y - mapY) * deltaDistY;
+    }
+    else
+    {
+      stepY = 1;
+      sideDistY = (mapY + 1.0 - y) * deltaDistY;
+    }
+	int i = -1;
+	while (hit == 0)
+    {
+      //jump to next map square, either in x-direction, or in y-direction
+      if (sideDistX < sideDistY)
+      {
+        sideDistX += deltaDistX;
+        mapX += stepX;
+        side = 0;
+      }
+      else
+      {
+        sideDistY += deltaDistY;
+          mapY += stepY;
+          side = 1;
+        }
+        //Check if ray has hit a wall
+		if (map[mapY][mapX] == '1')
+			hit = 1;
+    } 
+	draw_line(env, x, y, (mapX * 31), (mapY * 31));
+	//draw_line(env, x, y, x + 31 * pdx, y + 31 * pdy);
+}
+
+
 void	draw_player(t_env *env, float off_x, float off_y, int color)
 {
 	int x, y = -1;
@@ -103,52 +171,6 @@ void	draw_dir(t_env *env, float off_x, float off_y, int color)
 			my_mlx_pixel_put(&env->data, off_x + x, off_y + y, color);
 	}
 }
-
-// void	draw_rays(t_env *env, float px, float py)
-// {
-// 	float xo, yo, rx, ry, ra, aTan;
-// 	int	my, mx, mp, dof, r;
-	
-// 	ra = pa;
-// 	dof = 0;
-// 	aTan = -1/tan(ra);
-// 	if (ra > PI)
-// 	{
-// 		ry = (((int)py >> 6) << 6) - 0.0001;
-// 		rx = (py - ry) * aTan + px;
-// 		yo = -64;
-// 		xo = yo * aTan;
-// 	}
-// 		if (ra < PI)
-// 	{
-// 		ry = (((int)py >> 6) << 6) + 64;
-// 		rx = (py - ry) * aTan + px;
-// 		yo = 64;
-// 		xo = yo * aTan;
-// 	}
-// 	if (ra == 0 || ra == PI)
-// 	{
-// 		rx = px;
-// 		ry = py;
-// 		dof = 8;
-// 	}
-// 	printf("%d\n", dof);
-// 	while (dof < 8)
-// 	{
-// 		mx = (int) (rx) >> 6;
-// 		my = (int) (ry) >> 6;
-// 		mp = (my * 8) + mx;
-// 		if (mp < 64 && map[mp] == 1)
-// 			dof = 8;
-// 		else
-// 		{
-// 			rx += xo;
-// 			ry += yo;
-// 			dof += 1;
-// 		}
-// 	}
-// 	draw_line(env, rx, ry, xo, yo);
-// }
 
 void	env_init(t_env *env)
 {
@@ -186,69 +208,14 @@ void	draw_rays(t_env *env, float x, float y)
 
 	while (fov < 0.66)
 	{
-		pdy = sin(pa + fov) * 5;
-		pdx = cos(pa + fov) * 5;
-		draw_line(env, x + 7.5, y + 7.5, x + pdx * 23, y + pdy * 23);
-		fov += 0.1;
+		pdy = sin(pa + fov) * 10;
+		pdx = cos(pa + fov) * 10;
+		//draw_line(env, x, y, x + pdx *20, y + pdy *20);
+		tester(env, x + 7.5, y + 7.5, pdx, pdy);
+		fov += 0.05;
 	}
 }
 
-void	distacco(t_env *env, float x, float y, float pdx, float pdy)
-{
-	float rayDirX = x +pdx;
-	float rayDirY = y +pdy;
-	int deltaDistX = fabs(1 / rayDirX);
-	int deltaDistY = fabs(1 / rayDirY);
-	int mapX = (int)x;
-	int mapY = (int)y;
-	double sideDistX;
-	double sideDistY;
-	int stepX;
-    int stepY;
-	int hit = 0;
-	int side;
-    if (rayDirX < 0)
-    {
-      stepX = -1;
-      sideDistX = (x - mapX) * deltaDistX;
-    }
-    else
-    {
-      stepX = 1;
-      sideDistX = (mapX + 1.0 - x) * deltaDistX;
-    }
-    if (rayDirY < 0)
-    {
-      stepY = -1;
-      sideDistY = (y - mapY) * deltaDistY;
-    }
-    else
-    {
-      stepY = 1;
-      sideDistY = (mapY + 1.0 - y) * deltaDistY;
-    }
-	int	i = -1;
-    while (++i < 4)
-    {
-      //jump to next map square, either in x-direction, or in y-direction
-      if (sideDistX < sideDistY)
-      {
-        sideDistX += deltaDistX;
-        mapX += stepX;
-        side = 0;
-      }
-      else
-      {
-		printf("hey\n");
-        sideDistY += deltaDistY;
-        mapY += stepY;
-        side = 1;
-      }
-      //Check if ray has hit a wall
-    //   if (map[mapX][mapY] > 0) hit = 1;
-    }
-	draw_line(env, x + 7.5, y + 7.5, sideDistX, sideDistY);
-}
 int	key(int keycode, t_env *env)
 {
 	static float x = 100, y = 100, pdx = 0, pdy = 0;
@@ -290,9 +257,6 @@ int	key(int keycode, t_env *env)
 	// pdx = cos(pa + 0.66) * 5;
 	// draw_line(env, x + 7.5, y + 7.5, x + pdx * 23, y + pdy * 23);
 	draw_rays(env, x, y);
-	//distacco(env, x, y, pdx, pdy);
-	pdy = sin(pa) * 5;
-	pdx = cos(pa) * 5;
 	draw_player(env, x, y, 0x00FFFFFF);
 	mlx_put_image_to_window(env->mlx, env->mlx_win, env->data.img, 0, 0);
 	return (0);
