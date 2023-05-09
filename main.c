@@ -6,18 +6,22 @@
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:28 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 10:54:31 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:00:56 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3D.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*mlx_win;
+	t_game	game;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 640, 350, "Hello world!");
-	mlx_loop(mlx);
+	// game.mlx = mlx_init();
+	// game.mlx_win = mlx_new_window(game.mlx, 640, 350, "Hello world!");
+	map_converter(&game, argv[1]);
+	printf("%d\n",border_check(&game));
+	// while (game.map.map[++i])
+	// 	free(game.map.map[i]);
+	// free(game.map.map);
+	// mlx_loop(game.mlx);
 }
