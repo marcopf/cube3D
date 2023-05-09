@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3D.h                                           :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 10:45:49 by mpaterno         ###   ########.fr       */
+/*   Created: 2023/01/16 12:32:49 by mpaterno          #+#    #+#             */
+/*   Updated: 2023/01/20 15:10:14 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-# define CUBE3D_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "mlx/mlx.h"
-# include "libft/libft.h"
-# include "get_next_line/get_next_line.h"
+char	*ft_substr(char const *str, unsigned int start, size_t len)
+{
+	char	*new_str;
+	size_t	i;
 
-#endif
+	i = 0;
+	if (!str || start > ft_strlen(str))
+		return (ft_strdup(""));
+	new_str = malloc((len + 1) * sizeof(char));
+	if (!new_str)
+		return (0);
+	ft_bzero(new_str, len + 1);
+	while (i < len && str[start])
+		new_str[i++] = str[start++];
+	new_str[i] = 0;
+	return (new_str);
+}

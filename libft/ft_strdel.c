@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3D.h                                           :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 10:45:49 by mpaterno         ###   ########.fr       */
+/*   Created: 2023/01/16 12:30:39 by mpaterno          #+#    #+#             */
+/*   Updated: 2023/01/16 12:30:40 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-# define CUBE3D_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "mlx/mlx.h"
-# include "libft/libft.h"
-# include "get_next_line/get_next_line.h"
-
-#endif
+void	ft_strdel(char **as)
+{
+	if (as != NULL)
+	{
+		free(*as);
+		*as = NULL;
+	}
+}

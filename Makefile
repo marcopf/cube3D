@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marco <marco@student.42.fr>                +#+  +:+       +#+         #
+#    By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/06 14:12:38 by marco             #+#    #+#              #
-#    Updated: 2023/05/06 15:15:47 by marco            ###   ########.fr        #
+#    Updated: 2023/05/09 10:47:50 by mpaterno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= cube3D
+NAME	= cub3D
 
-SRC			= main.c
+SRC			= main.c $(wildcard get_next_line/*.c)
 
 OBJ		= $(SRC:%.c=%.o)
 
@@ -28,17 +28,18 @@ BLUE	= \033[1;34m
 RESET	= \033[0;0m
 
 $(NAME): $(OBJ)
+	@make -C libft
 	@make -C mlx
 	@cp mlx/libmlx.dylib .
-	@$(CC) $(FLAGS) $(OBJ) $(MLX) -o $(NAME)
+	@$(CC) $(FLAGS) $(OBJ) $(MLX) -L ./libft -lft -o $(NAME)
 	@printf "\r\033[KCUBE3D  CREATED  SUCCESSUFULLY\n$(RESET)"
 	@printf "$(BLUE)-------------------------------------------------------------------------\n$(RESET)"
-	@printf "  ██████╗██╗   ██╗██████╗ ███████╗██████╗ ██████╗ \n"
-	@printf " ██╔════╝██║   ██║██╔══██╗██╔════╝╚════██╗██╔══██╗\n"
-	@printf " ██║     ██║   ██║██████╔╝█████╗   █████╔╝██║  ██║\n"
-	@printf " ██║     ██║   ██║██╔══██╗██╔══╝   ╚═══██╗██║  ██║\n"
-	@printf " ╚██████╗╚██████╔╝██████╔╝███████╗██████╔╝██████╔╝\n"
-	@printf "  ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝╚═════╝ ╚═════╝ \n"
+	@printf "  ██████╗██╗   ██╗██████╗ ██████╗ ██████╗ \n"
+	@printf " ██╔════╝██║   ██║██╔══██╗╚════██╗██╔══██╗\n"
+	@printf " ██║     ██║   ██║██████╔╝ █████╔╝██║  ██║\n"
+	@printf " ██║     ██║   ██║██╔══██╗ ╚═══██╗██║  ██║\n"
+	@printf " ╚██████╗╚██████╔╝██████╔╝██████╔╝██████╔╝\n"
+	@printf "  ╚═════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚═════╝ \n"
 	@printf "\n$(BLUE)-------------------------------------------------------------------------\n$(RESET)"
 	@printf "$(YELLOW)Made with love and bestemmie by Afraccal e Mpaterno.\n$(RESET)"
 	@printf "$(BLUE)-------------------------------------------------------------------------\n$(RESET)"
@@ -53,6 +54,7 @@ linux: $(OBJ)
 
 clean:
 	@make -C mlx clean
+	@make -C libft clean
 	@printf "$(RED)\nRemoving Object files...\n$(RESET)"
 	@printf "$(BLUE)-------------------------------------------------------------------------\n$(RESET)"
 	@$(RM) $(OBJ)
@@ -60,6 +62,7 @@ clean:
 	
 fclean: clean
 	@rm libmlx.dylib
+	@make -C libft fclean
 	@printf "$(RED)\nRemoving program executable...\n$(RESET)"
 	@printf "$(BLUE)-------------------------------------------------------------------------\n$(RESET)"
 	@$(RM) $(NAME)

@@ -1,23 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3D.h                                           :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 10:45:49 by mpaterno         ###   ########.fr       */
+/*   Created: 2023/01/16 12:28:19 by mpaterno          #+#    #+#             */
+/*   Updated: 2023/01/16 12:28:19 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-# define CUBE3D_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "mlx/mlx.h"
-# include "libft/libft.h"
-# include "get_next_line/get_next_line.h"
+void	ft_putnbr_fd(int n, int fd)
+{
+	int		temp;
+	char	c;
 
-#endif
+	if (n == -2147483648)
+		write(fd, "-2147483648", 11);
+	else
+	{
+		if (n < 0)
+		{
+			n = -n;
+			write(fd, "-", 1);
+		}
+		if (n <= 9)
+		{
+			c = n + '0';
+			write(fd, &c, 1);
+		}
+		else
+		{
+			temp = (n % 10) + '0';
+			n = n / 10;
+			ft_putnbr_fd(n, fd);
+			write(fd, &temp, 1);
+		}
+	}
+}
