@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:18:28 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 10:54:31 by mpaterno         ###   ########.fr       */
+/*   Created: 2023/01/26 11:36:02 by mpaterno          #+#    #+#             */
+/*   Updated: 2023/05/09 10:48:17 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	main(void)
-{
-	void	*mlx;
-	void	*mlx_win;
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include "../libft/libft.h"
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 640, 350, "Hello world!");
-	mlx_loop(mlx);
-}
+char	*ft_strjoin_gnl(const char *s1, const char *s2);
+char	*get_next_line(int fd);
+
+#endif

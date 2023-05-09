@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:18:28 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 10:54:31 by mpaterno         ###   ########.fr       */
+/*   Created: 2023/01/16 12:27:12 by mpaterno          #+#    #+#             */
+/*   Updated: 2023/01/20 15:41:09 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "libft.h"
 
-int	main(void)
+void	*ft_memchr(const void *src, int c, size_t n)
 {
-	void	*mlx;
-	void	*mlx_win;
+	unsigned char	*src_ptr;
+	size_t			i;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 640, 350, "Hello world!");
-	mlx_loop(mlx);
+	i = -1;
+	src_ptr = (unsigned char *) src;
+	while (++i < n)
+	{
+		if (src_ptr[i] == (unsigned char) c)
+			return ((void *)(src + i));
+	}
+	return (0);
 }

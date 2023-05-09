@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:18:28 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 10:54:31 by mpaterno         ###   ########.fr       */
+/*   Created: 2023/01/16 12:30:47 by mpaterno          #+#    #+#             */
+/*   Updated: 2023/01/19 14:56:38 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "libft.h"
 
-int	main(void)
+char	*ft_strdup(const char *str)
 {
-	void	*mlx;
-	void	*mlx_win;
+	char	*to_return;
+	int		i;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 640, 350, "Hello world!");
-	mlx_loop(mlx);
+	i = -1;
+	to_return = (char *) malloc((sizeof(char) * ft_strlen(str)) + 1);
+	if (!to_return)
+		return (0);
+	while (str[++i])
+	{
+		to_return[i] = str[i];
+	}
+	to_return[i] = 0;
+	return (to_return);
 }

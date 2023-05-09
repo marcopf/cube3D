@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:18:28 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 10:54:31 by mpaterno         ###   ########.fr       */
+/*   Created: 2023/01/17 10:17:43 by mpaterno          #+#    #+#             */
+/*   Updated: 2023/01/17 11:27:07 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "libft.h"
 
-int	main(void)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	void	*mlx;
-	void	*mlx_win;
+	size_t	i;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 640, 350, "Hello world!");
-	mlx_loop(mlx);
+	i = 0;
+	if (!src || !dst || size == 0)
+		return (ft_strlen(src));
+	while (src[i] && i < size - 1)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = 0;
+	return (ft_strlen(src));
 }

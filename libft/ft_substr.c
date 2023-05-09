@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:18:28 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 10:54:31 by mpaterno         ###   ########.fr       */
+/*   Created: 2023/01/16 12:32:49 by mpaterno          #+#    #+#             */
+/*   Updated: 2023/01/20 15:10:14 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "libft.h"
 
-int	main(void)
+char	*ft_substr(char const *str, unsigned int start, size_t len)
 {
-	void	*mlx;
-	void	*mlx_win;
+	char	*new_str;
+	size_t	i;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 640, 350, "Hello world!");
-	mlx_loop(mlx);
+	i = 0;
+	if (!str || start > ft_strlen(str))
+		return (ft_strdup(""));
+	new_str = malloc((len + 1) * sizeof(char));
+	if (!new_str)
+		return (0);
+	ft_bzero(new_str, len + 1);
+	while (i < len && str[start])
+		new_str[i++] = str[start++];
+	new_str[i] = 0;
+	return (new_str);
 }

@@ -2,7 +2,7 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   cube3D.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
+/*                                                    +:+ +:+         +:+     *
 /*   By: afraccal <afraccal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
@@ -17,6 +17,8 @@
 # include <unistd.h>
 # include <stdio.h>
 # include "mlx/mlx.h"
+# include "libft/libft.h"
+# include "get_next_line/get_next_line.h"
 
 typedef struct s_image {
 	void	*img;

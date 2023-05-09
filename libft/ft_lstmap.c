@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:18:28 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 10:54:31 by mpaterno         ###   ########.fr       */
+/*   Created: 2023/01/16 12:26:41 by mpaterno          #+#    #+#             */
+/*   Updated: 2023/01/19 10:16:21 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "libft.h"
 
-int	main(void)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	void	*mlx;
-	void	*mlx_win;
+	t_list	*new_lst;
+	t_list	*temp;
+	t_list	*ret;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 640, 350, "Hello world!");
-	mlx_loop(mlx);
+	if (!lst || !f || !del)
+		return (NULL);
+	temp = lst;
+	new_lst = ft_lstnew(f(temp->content));
+	ret = new_lst;
+	while (temp->next)
+	{
+		new_lst->next = ft_lstnew(f(temp->next->content));
+		new_lst = new_lst->next;
+		temp = temp->next;
+	}
+	return (ret);
 }

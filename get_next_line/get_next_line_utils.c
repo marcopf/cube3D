@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:18:28 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 10:54:31 by mpaterno         ###   ########.fr       */
+/*   Created: 2023/01/26 11:34:06 by mpaterno          #+#    #+#             */
+/*   Updated: 2023/05/09 10:46:42 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "get_next_line.h"
 
-int	main(void)
+char	*ft_strjoin_gnl(const char *s1, const char *s2)
 {
-	void	*mlx;
-	void	*mlx_win;
+	int		i;
+	int		j;
+	char	*new_str;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 640, 350, "Hello world!");
-	mlx_loop(mlx);
+	if (!s1 || !s2)
+		return (0);
+	new_str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!new_str)
+		return (0);
+	i = -1;
+	j = 0;
+	while (s1[++i])
+		new_str[j++] = s1[i];
+	i = -1;
+	while (s2[++i])
+		new_str[j++] = s2[i];
+	new_str[j] = 0;
+	free((void *)s1);
+	return (new_str);
 }

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:18:28 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 10:54:31 by mpaterno         ###   ########.fr       */
+/*   Created: 2023/01/16 12:32:03 by mpaterno          #+#    #+#             */
+/*   Updated: 2023/01/20 09:31:02 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "libft.h"
 
-int	main(void)
+char	*ft_strmapi(char const *str, char (*f)(unsigned int, char))
 {
-	void	*mlx;
-	void	*mlx_win;
+	unsigned int	i;
+	char			*new_str;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 640, 350, "Hello world!");
-	mlx_loop(mlx);
+	i = -1;
+	if (!str || !(*f))
+		return (0);
+	new_str = ft_strdup(str);
+	if (!new_str)
+		return (0);
+	while (str[++i])
+		new_str[i] = f(i, str[i]);
+	return (new_str);
 }
