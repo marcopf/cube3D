@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3D.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 15:00:59 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/09 22:30:15 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,16 @@ typedef struct s_map
 	int			height;
 }	t_map;
 
+typedef struct s_textures
+{
+	char	*nord;
+	char	*sud;
+	char	*ovest;
+	char	*est;
+	int		floor[3];
+	int		ceilling[3];
+}	t_textures;
+
 typedef struct s_raycast
 {
 	t_vector	draw_start;
@@ -85,6 +95,7 @@ typedef struct s_game
 	void		*mlx_win;
 	int			width;
 	int			height;
+	t_textures	tex;
 	t_map		map;
 	t_minimap	minimap;
 	t_player	player;
@@ -92,11 +103,20 @@ typedef struct s_game
 	t_image		image;
 }	t_game;
 
-int		map_converter(t_game *game, char *path);
+int		map_converter(t_game *game, char *path, int fd);
 int		border_check(t_game *game);
 int		arg_check(int argc, char **argv);
+int		parse_map(t_game *game, char *path);
 
 /*Init*/
 void	init_game(t_game *game);
+
+/*Map Parser*/
+int		find_texture(t_game *game, int fd);
+int		go_to_map(t_game *game, char *path);
+int		get_map_line(t_game *game, char *path);
+int		find_texture(t_game *game, int fd);
+int		find_colors(t_game *game, int fd);
+void	assign_color(t_game *game, char c, char **colors);
 
 #endif

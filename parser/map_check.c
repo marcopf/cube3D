@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:23:50 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/09 15:39:30 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/09 22:29:17 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	check_side(t_game *game, int x, int y)
 {
-	if (x + 1 <= game->map.width - 1
+	if (x + 1 < game->map.width
 		&& (game->map.map[y][x + 1] != '1' && game->map.map[y][x + 1] != ' '))
 		return (0);
 	if (x - 1 >= 0
 		&& (game->map.map[y][x - 1] != '1' && game->map.map[y][x - 1] != ' '))
 		return (0);
-	if (y + 1 <= game->map.height - 1
+	if (y + 1 < game->map.height
 		&& (game->map.map[y + 1][x] != '1' && game->map.map[y + 1][x] != ' '))
 		return (0);
 	if (y - 1 >= 0
@@ -31,18 +31,21 @@ int	check_side(t_game *game, int x, int y)
 
 int	check_diag(t_game *game, int x, int y)
 {
-	if ((x + 1 <= game->map.width - 1 && y + 1 <= game->map.height - 1)
+	if ((x + 1 < game->map.width && y + 1 < game->map.height)
 		&& (game->map.map[y + 1][x + 1] != '1'
 		&& game->map.map[y + 1][x + 1] != ' '))
 		return (0);
 	if ((x - 1 >= 0 && y - 1 >= 0)
-		&& (game->map.map[y - 1][x - 1] != '1' && game->map.map[y - 1][x - 1] != ' '))
+		&& (game->map.map[y - 1][x - 1] != '1'
+		&& game->map.map[y - 1][x - 1] != ' '))
 		return (0);
-	if ((y + 1 <= game->map.height - 1 && x - 1 >= 0)
-		&& (game->map.map[y + 1][x - 1] != '1' && game->map.map[y + 1][x - 1] != ' '))
+	if ((y + 1 < game->map.height && x - 1 >= 0)
+		&& (game->map.map[y + 1][x - 1] != '1'
+		&& game->map.map[y + 1][x - 1] != ' '))
 		return (0);
-	if ((y - 1 >= 0 && x + 1 <= game->map.width - 1)
-		&& (game->map.map[y - 1][x + 1] != '1' && game->map.map[y - 1][x + 1] != ' '))
+	if ((y - 1 >= 0 && x + 1 < game->map.width)
+		&& (game->map.map[y - 1][x + 1] != '1'
+		&& game->map.map[y - 1][x + 1] != ' '))
 		return (0);
 	return (1);
 }

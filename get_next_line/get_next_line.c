@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:17:14 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/09 10:48:29 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/09 21:29:27 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*print_remain(char	*str)
 	else
 	{
 		i = -1;
-		while (++i < 4)
+		while (++i < 1)
 			str[i] = 0;
 	}
 	return (ret);
@@ -39,20 +39,20 @@ char	*print_remain(char	*str)
 
 char	*get_line(int fd)
 {
-	char	buff[4 + 1];
+	char	buff[1 + 1];
 	int		flag;
 	char	*ret;
 	int		i;
 
 	flag = 1;
 	ret = ft_strdup("");
-	buff[4] = 0;
+	buff[1] = 0;
 	while (ft_strchr(ret, '\n') == 0 && flag)
 	{
 		i = -1;
-		while (++i < 4)
+		while (++i < 1)
 			buff[i] = 0;
-		flag = read(fd, buff, 4);
+		flag = read(fd, buff, 1);
 		ret = ft_strjoin_gnl(ret, buff);
 		if (flag <= 0 && !*ret)
 		{
@@ -103,13 +103,13 @@ void	free_all(char **strs, char *str, char *buff)
 
 char	*get_next_line(int fd)
 {
-	static char	buff[4 + 1];
+	static char	buff[1 + 1];
 	char		*full;
 	char		*str;
 	char		**strs;
 	char		*ret;
 
-	if (fd < 0 || 4 <= 0)
+	if (fd < 0 || 1 <= 0)
 		return (NULL);
 	if (ft_strchr(buff, '\n'))
 		return (print_remain(buff));
