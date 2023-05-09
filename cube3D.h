@@ -20,6 +20,10 @@
 # include "libft/libft.h"
 # include "get_next_line/get_next_line.h"
 
+# define NAME "cub3D"
+# define WIDTH 1280
+# define HEIGHT 720
+
 typedef struct s_image {
 	void	*img;
 	char	*addr;
@@ -34,11 +38,12 @@ typedef struct s_game
 	void		*mlx_win;
 	int			width;
 	int			height;
-	t_map		*map;
+	t_map		map;
 	t_minimap	minimap;
 	t_player	player;
 	t_raycast	raycast;
 	t_image		image;
+	t_image		screen;
 }	t_game;
 
 typedef struct s_vector
@@ -87,5 +92,7 @@ typedef struct s_player
 	t_vector	dir;
 	double		rot_dir;
 }	t_player;
+
+void	init_game (t_game *game);
 
 #endif

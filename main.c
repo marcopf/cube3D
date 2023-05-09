@@ -3,21 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afraccal <afraccal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:28 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 10:54:31 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:05:22 by afraccal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3D.h"
 
-int	main(void)
+int arg_check(int argc, char **argv)
 {
-	void	*mlx;
-	void	*mlx_win;
+    int	i;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 640, 350, "Hello world!");
-	mlx_loop(mlx);
+	i = ft_strlen (argv[1]) - 4;
+    if (argc < 2 || argc > 2)
+        return (printf ("Numero argomenti sbagliato\n"));
+    if (!ft_strncmp(argv[1][i], ".cub", 4))
+		return (printf ("Estensione file errata\n"));
+    return (0);
+}
+
+int	main(int argc, char **argv)
+{
+	t_game	game;
+	
+	if (!arg_check(argc, argv))
+		return (1);
+	init_game(&game);
+	mlx_loop(game.mlx);
+	return (0);
 }
