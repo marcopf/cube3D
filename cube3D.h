@@ -2,11 +2,11 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   cube3D.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     *
+/*                                                    +:+ +:+         +:+     */
 /*   By: afraccal <afraccal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 11:11:20 by afraccal         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:25:00 by afraccal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct s_player
 	double		rot_dir;
 }	t_player;
 
-void	init_game (t_game *game);
+/*Init*/
+void	init_game(t_game *game);
 
 #endif
