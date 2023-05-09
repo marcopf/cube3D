@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3D.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afraccal <afraccal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 14:00:14 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:25:00 by afraccal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include "mlx/mlx.h"
 # include "libft/libft.h"
 # include "get_next_line/get_next_line.h"
+
+# define NAME "cub3D"
+# define WIDTH 1280
+# define HEIGHT 720
 
 typedef struct s_image {
 	void	*img;
@@ -90,5 +94,8 @@ typedef struct s_game
 
 int	map_converter(t_game *game, char *path);
 int border_check(t_game *game);
+
+/*Init*/
+void	init_game(t_game *game);
 
 #endif
