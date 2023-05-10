@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afraccal <afraccal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:28 by marco             #+#    #+#             */
-/*   Updated: 2023/05/10 11:01:35 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/10 12:04:36 by afraccal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3D.h"
-
-void	free_game(t_game *game)
-{
-	int	i;
-
-	i = -1;
-	free(game->tex.est);
-	free(game->tex.nord);
-	free(game->tex.sud);
-	free(game->tex.ovest);
-	while (game->map.map[++i])
-		free(game->map.map[i]);
-	free(game->map.map);
-}
 
 int	close_game(t_game *game)
 {

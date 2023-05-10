@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3D.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afraccal <afraccal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
-/*   Updated: 2023/05/10 10:49:15 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/10 12:04:12 by afraccal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,9 @@ int		parse_map(t_game *game, char *path);
 
 /*Init*/
 void	init_game(t_game *game);
+
+/*Free*/
+int	free_game(t_game *game);
 
 /*Map Parser*/
 int		find_texture(t_game *game, int fd);
