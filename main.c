@@ -6,7 +6,7 @@
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:28 by marco             #+#    #+#             */
-/*   Updated: 2023/05/10 09:35:32 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/10 11:01:35 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 
+	init_game(&game);
 	if (!arg_check(argc, argv))
 		return (1);
 	if (parse_map(&game, argv[1]) == -1)
-		printf("Error: invalid file sintax\n");
-	init_game(&game);
+		return (printf("Error: invalid file sintax\n"));
 	mlx_hook(game.mlx_win, 17, 0, close_game, &game);
 	mlx_loop(game.mlx);
 	return (0);
