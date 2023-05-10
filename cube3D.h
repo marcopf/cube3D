@@ -6,7 +6,7 @@
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
-/*   Updated: 2023/05/10 10:49:15 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/10 11:30:08 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <math.h>
 # include <fcntl.h>
 # include "mlx/mlx.h"
 # include "libft/libft.h"
@@ -64,7 +65,10 @@ typedef struct s_raycast
 	t_vector	side_dist;
 	t_vector	delta_dist;
 	t_vector	ray_dir;
-	double		perpwalldist;
+	double		perp_wall_dist;
+	double		camera_x;
+	int			side;
+	int			hit;
 	int			line_height;
 	int			step_x;
 	int			step_y;
@@ -87,6 +91,7 @@ typedef struct s_player
 {
 	t_vector	pos;
 	t_vector	dir;
+	t_vector	plane;
 	double		rot_dir;
 }	t_player;
 typedef struct s_game
@@ -99,7 +104,7 @@ typedef struct s_game
 	t_map		map;
 	t_minimap	minimap;
 	t_player	player;
-	t_raycast	raycast;
+	t_raycast	ray;
 	t_data		data;
 }	t_game;
 
@@ -118,5 +123,7 @@ int		get_map_line(t_game *game, char *path);
 int		find_texture(t_game *game, int fd);
 int		find_colors(t_game *game, int fd);
 int		assign_color(t_game *game, char c, char **colors);
+
+void	draw_line(t_game *game, t_vector begin, t_vector end, int color);
 
 #endif
