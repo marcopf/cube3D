@@ -6,7 +6,7 @@
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:54:52 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/10 09:11:25 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/10 10:54:15 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ int	parse_map(t_game *game, char *path)
 	int	fd;
 
 	fd = open(path, O_RDONLY);
-	find_texture(game, fd);
-	find_colors(game, fd);
+	if (find_texture(game, fd) == -1)
+		return (-1);
+	if (find_colors(game, fd) == -1)
+		return (-1);
 	close(fd);
 	map_converter(game, path, go_to_map(game, path));
 	if (border_check(game))

@@ -6,7 +6,7 @@
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:39:41 by afraccal          #+#    #+#             */
-/*   Updated: 2023/05/10 09:23:40 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/10 10:14:41 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,17 @@
 // 			&game->minimap.map.endian);
 // }
 
+void	init_tex(t_textures *tex)
+{
+	tex->nord = 0;
+	tex->sud = 0;
+	tex->ovest = 0;
+	tex->est = 0;
+}
+
 void	init_game(t_game *game)
 {	
 	game->mlx = mlx_init();
 	game->mlx_win = mlx_new_window (game->mlx, WIDTH, HEIGHT, NAME);
-	
+	init_tex(&game->tex);
 }

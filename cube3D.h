@@ -6,7 +6,7 @@
 /*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
-/*   Updated: 2023/05/10 09:39:49 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/10 10:49:15 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ typedef struct s_raycast
 
 typedef struct s_minimap
 {
-	t_image		map;
+	t_data		map;
 	int			x;
 	int			y;
 	int			width;
@@ -117,6 +117,6 @@ int		go_to_map(t_game *game, char *path);
 int		get_map_line(t_game *game, char *path);
 int		find_texture(t_game *game, int fd);
 int		find_colors(t_game *game, int fd);
-void	assign_color(t_game *game, char c, char **colors);
+int		assign_color(t_game *game, char c, char **colors);
 
 #endif
