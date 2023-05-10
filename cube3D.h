@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3D.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
-/*   Updated: 2023/05/09 22:30:15 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/10 09:39:49 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@
 # define WIDTH 1280
 # define HEIGHT 720
 
-typedef struct s_image {
+typedef struct s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_image;
+}				t_data;
 
 typedef struct s_vector
 {
@@ -100,7 +100,7 @@ typedef struct s_game
 	t_minimap	minimap;
 	t_player	player;
 	t_raycast	raycast;
-	t_image		image;
+	t_data		data;
 }	t_game;
 
 int		map_converter(t_game *game, char *path, int fd);

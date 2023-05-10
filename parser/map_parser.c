@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:54:52 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/09 22:33:45 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/10 09:11:25 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ int	parse_map(t_game *game, char *path)
 	int	fd;
 
 	fd = open(path, O_RDONLY);
-	if (!fd)
-		return (-1);
 	find_texture(game, fd);
 	find_colors(game, fd);
 	close(fd);
