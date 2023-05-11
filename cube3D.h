@@ -22,9 +22,18 @@
 # include "libft/libft.h"
 # include "get_next_line/get_next_line.h"
 
+# define RGB_RED 0x00FF0000
+# define RGB_GREEN 0x0000FF00
+# define RGB_BLUE 0x000000FF
+# define RGB_YELLOW 0x00FFFF00
+# define RGB_WHITE 0x00FFFFFF
+# define RGB_DARK_GREY 0x00282828
+
 # define NAME "cub3D"
 # define WIDTH 1280
 # define HEIGHT 720
+# define TEXTURE_SIZE 64
+# define TILE_SET 10
 
 typedef struct s_data {
 	void	*img;
@@ -74,6 +83,7 @@ typedef struct s_raycast
 	int			step_y;
 	int			map_x;
 	int			map_y;
+	int			color;
 }	t_raycast;
 
 typedef struct s_minimap
@@ -94,18 +104,23 @@ typedef struct s_player
 	t_vector	plane;
 	double		rot_dir;
 }	t_player;
+
 typedef struct s_game
 {
 	void		*mlx;
 	void		*mlx_win;
 	int			width;
 	int			height;
+	int			wall_width[13];
+	int			wall_height[13];
 	t_textures	tex;
 	t_map		map;
 	t_minimap	minimap;
 	t_player	player;
 	t_raycast	ray;
 	t_data		data;
+	t_data		walls[13];
+	t_data		screen;
 }	t_game;
 
 int		map_converter(t_game *game, char *path, int fd);

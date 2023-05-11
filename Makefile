@@ -32,6 +32,7 @@ $(NAME): $(OBJ)
 	@make -C mlx
 	@cp mlx/libmlx.dylib .
 	@$(CC) $(FLAGS) $(OBJ) $(MLX) -L ./libft -lft -o $(NAME)
+	#@$(CC) $(FLAGS) $(OBJ) -L ./libft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 	@printf "\r\033[KCUBE3D  CREATED  SUCCESSUFULLY\n$(RESET)"
 	@printf "$(BLUE)-------------------------------------------------------------------------\n$(RESET)"
 	@printf "  ██████╗██╗   ██╗██████╗ ██████╗ ██████╗ \n"
@@ -46,6 +47,7 @@ $(NAME): $(OBJ)
 
 %.o : %.c
 	@$(CC) $(FLAG) -Imlx -c $< -o $@
+	#@$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 all: $(NAME)
 
