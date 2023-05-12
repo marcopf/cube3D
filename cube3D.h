@@ -6,7 +6,7 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
-/*   Updated: 2023/05/12 16:36:13 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/12 19:27:28 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,8 @@ typedef struct s_game
 	int			width;
 	int			height;
 	double		frame_time;
-	int			wall_width[13];
-	int			wall_height[13];
+	int			wall_widths[13];
+	int			wall_heights[13];
 	t_textures	tex;
 	t_map		map;
 	t_minimap	minimap;

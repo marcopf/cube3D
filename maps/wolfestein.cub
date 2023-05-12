@@ -1,10 +1,10 @@
-NO ./maps/minecraft.xpm
-SO ./maps/minecraft.xpm
-WE ./maps/minecraft.xpm
-EA ./maps/minecraft.xpm
+NO ./maps/nord.xpm
+SO ./maps/sud.xpm
+WE ./maps/est.xpm
+EA ./maps/est.xpm
 
 C 135,206,235
-F 91,135,49
+F 133,94,66
 
 1111111111111111111      
 1000000000101101011      

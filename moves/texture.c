@@ -6,13 +6,13 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:30:21 by marco             #+#    #+#             */
-/*   Updated: 2023/05/12 15:30:22 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/12 20:32:27 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3D.h"
 
-int	get_texture(t_game *game)
+int	get_texture_x(t_game *game)
 {
 	double	wall_x;
 	int		tex_x;
@@ -40,18 +40,18 @@ void	render_texture(t_game *game, int x)
 	int				y;
 	unsigned int	color;
 
-	tex.x = get_texture(game);
 	step = 1.0 * TEXTURE_SIZE / game->ray.line_height;
+	tex.x = get_texture_x(game);
 	tex_pos = (game->ray.draw_start.y - HEIGHT / 2 + game->ray.line_height / 2)
 		* step;
-	y = game->ray.draw_start.y;
-	while (y < game->ray.draw_end.y)
+	y = game->ray.draw_start.y - 1;
+	while (++y < game->ray.draw_end.y)
 	{
-		tex.y = (int) tex_pos & (TEXTURE_SIZE -1);
+		tex.y = (int)tex_pos & (TEXTURE_SIZE - 1);
 		tex_pos += step;
 		color = *(unsigned int *)(game->walls[game->ray.color].addr
 				+ 4 * (TEXTURE_SIZE * (int)tex.y + (int)tex.x));
-		my_mlx_pixel_put(&game->screen, x, y, color);
+		my_mlx_pixel_put(&game->data, x, y, color);
 	}
 }
 
@@ -72,10 +72,10 @@ void	draw_texture(t_game *game, int x)
 	int	colors[4];
 
 	select_texture(game);
-	// if (1)
-	// 	render_texture(game, x);
-	// else
-	// {
+	if (1)
+		render_texture(game, x);
+	else
+	{
 		colors[0] = RGB_BLUE;
 		colors[1] = RGB_GREEN;
 		colors[2] = RGB_RED;
@@ -83,5 +83,5 @@ void	draw_texture(t_game *game, int x)
 		game->ray.color %= 4;
 		draw_line_on(&game->data, game->ray.draw_start,
 			game->ray.draw_end, colors[game->ray.color]);
-	// }
+	}
 }
