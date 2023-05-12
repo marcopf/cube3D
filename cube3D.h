@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3D.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
-/*   Updated: 2023/05/10 11:30:08 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/12 11:36:01 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@
 # define RGB_DARK_GREY 0x00282828
 
 # define NAME "cub3D"
+# define PLAYER_CHARACTERS "NSWE"
 # define WIDTH 1280
 # define HEIGHT 720
+# define SPEED 3.0
+# define ROT_SPEED 2.5
 # define TEXTURE_SIZE 64
 # define TILE_SET 10
 
@@ -101,7 +104,10 @@ typedef struct s_player
 {
 	t_vector	pos;
 	t_vector	dir;
+	t_vector	mov_dir;
 	t_vector	plane;
+	t_vector	mov_speed;
+	double		rot_speed;
 	double		rot_dir;
 }	t_player;
 
@@ -111,6 +117,7 @@ typedef struct s_game
 	void		*mlx_win;
 	int			width;
 	int			height;
+	double		frame_time;
 	int			wall_width[13];
 	int			wall_height[13];
 	t_textures	tex;
@@ -127,9 +134,22 @@ int		map_converter(t_game *game, char *path, int fd);
 int		border_check(t_game *game);
 int		arg_check(int argc, char **argv);
 int		parse_map(t_game *game, char *path);
+int		free_game(t_game *game);
+
+/*Movement*/
+void	update_inputs(t_game *game);
+int		input_on_press(int key, t_game *game);
+int		input_on_release(int key, t_game *game);
+
+/*drawing*/
+void	raycaster_flat(t_game *game);
+int		draw_frame(t_game *game);
+void	draw_line_on(t_data *img, t_vector begin, t_vector end, int color);
+void	draw_line(t_game *game, t_vector begin, t_vector end, int color);
 
 /*Init*/
 void	init_game(t_game *game);
+int		start_player(t_game *game);
 
 /*Map Parser*/
 int		find_texture(t_game *game, int fd);
@@ -138,7 +158,5 @@ int		get_map_line(t_game *game, char *path);
 int		find_texture(t_game *game, int fd);
 int		find_colors(t_game *game, int fd);
 int		assign_color(t_game *game, char c, char **colors);
-
-void	draw_line(t_game *game, t_vector begin, t_vector end, int color);
 
 #endif
