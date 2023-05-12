@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 10:51:03 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/10 11:06:19 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:18:44 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	col_cycle(t_game *game, int *col, char **colors)
 		val = ft_atoi(colors[i]);
 		if (val > 255 || (val == 0 && colors[i][0] != '0'))
 			return (-1);
-		game->tex.floor[i] = val;
+		col[i] = val;
 	}
 	return (0);
 }
@@ -34,12 +34,12 @@ int	assign_color(t_game *game, char c, char **colors)
 	int	val;
 
 	i = -1;
-	if (c == 'F')
+	if (c == 'C')
 	{
 		if (col_cycle(game, game->tex.ceilling, colors) == -1)
 			return (-1);
 	}
-	else if (c == 'C')
+	else if (c == 'F')
 	{
 		if (col_cycle(game, game->tex.floor, colors) == -1)
 			return (-1);

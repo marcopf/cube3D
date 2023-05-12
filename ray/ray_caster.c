@@ -6,7 +6,7 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 11:18:39 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/12 11:47:48 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/12 16:42:59 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,14 @@ void	raycaster_flat(t_game *game)
 		calculate_side_dist_and_step(game);
 		perform_dda(game);
 		get_line_size(game);
-		draw_line_on(&game->data, game->ray.draw_start,
-			game->ray.draw_end, 0x0000FF00);
+		draw_texture(game, x);
+		game->minimap.begin_ray.x = game->player.pos.x * 11;
+		game->minimap.begin_ray.y = game->player.pos.y * 11;
+			game->minimap.end_ray.x = (game->ray.ray_dir.x
+				* game->ray.perp_wall_dist + game->player.pos.x) * (double)11;
+		game->minimap.end_ray.y = (game->ray.ray_dir.y
+				* game->ray.perp_wall_dist + game->player.pos.y) * (double)11;
+		draw_line_on(&game->minimap.map, game->minimap.begin_ray,
+			game->minimap.end_ray, 0x00FeF580);
 	}
 }

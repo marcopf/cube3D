@@ -6,7 +6,7 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 09:36:44 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/12 10:39:25 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/12 16:12:33 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,24 @@ void	draw_line_on(t_data *img, t_vector begin, t_vector end, int color)
 		px += dx;
 		py += dy;
 		--pixels;
+	}
+}
+
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+void	draw_square(t_data *img, t_vector start, int side, int color)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (++y < side)
+	{
+		x = -1;
+		while (++x < side)
+			my_mlx_pixel_put(img, x + start.x, y + start.y, color);
 	}
 }

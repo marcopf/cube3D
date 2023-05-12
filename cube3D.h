@@ -6,7 +6,7 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
-/*   Updated: 2023/05/12 11:48:38 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/12 16:36:13 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,10 @@ int		draw_frame(t_game *game);
 void	draw_line_on(t_data *img, t_vector begin, t_vector end, int color);
 void	draw_line(t_game *game, t_vector begin, t_vector end, int color);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	draw_texture(t_game *game, int x);
+int		create_trgb(int t, int r, int g, int b);
+void	draw_square(t_data *img, t_vector start, int side, int color);
+void	draw_minimap(t_game *game);
 
 /*Init*/
 void	init_game(t_game *game);

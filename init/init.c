@@ -6,7 +6,7 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:39:41 by afraccal          #+#    #+#             */
-/*   Updated: 2023/05/12 10:48:03 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/12 15:52:47 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,13 @@ void	init_game(t_game *game)
 	game->mlx = mlx_init();
 	game->mlx_win = mlx_new_window (game->mlx, WIDTH, HEIGHT, NAME);
 	game->data.img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
+	game->minimap.map.img = mlx_new_image(game->mlx, game->map.width * 11,
+			game->map.height * 11);
 	game->data.addr = mlx_get_data_addr(game->data.img,
 			&game->data.bits_per_pixel, &game->data.line_length,
 			&game->data.endian);
+	game->minimap.map.addr = mlx_get_data_addr(game->minimap.map.img,
+			&game->minimap.map.bits_per_pixel, &game->minimap.map.line_length,
+			&game->minimap.map.endian);
 	init_tex(&game->tex);
 }
