@@ -6,7 +6,7 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 11:35:17 by afraccal          #+#    #+#             */
-/*   Updated: 2023/05/12 21:14:08 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/12 21:31:58 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,16 @@ int	free_matrix(char **map)
 	return (1);
 }
 
-int	free_texture(t_textures *tex)
+int	free_texture(t_game *game)
 {
-	if (tex->nord)
-		free(tex->nord);
-	tex->nord = NULL;
-	if (tex->sud)
-		free(tex->sud);
-	tex->sud = NULL;
-	if (tex->est)
-		free(tex->est);
-	tex->est = NULL;
-	if (tex->ovest)
-		free(tex->ovest);
-	tex->ovest = NULL;
+	if (game->tex.nord)
+		free(game->tex.nord);
+	if (game->tex.sud)
+		free(game->tex.sud);
+	if (game->tex.est)
+		free(game->tex.est);
+	if (game->tex.ovest)
+		free(game->tex.ovest);
 	return (1);
 }
 
@@ -50,7 +46,7 @@ int	free_map(t_map map)
 
 int	free_game(t_game *game)
 {
-	free_texture(&game->tex);
+	free_texture(game);
 	free_map(game->map);
-	return (1);
+	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:39:41 by afraccal          #+#    #+#             */
-/*   Updated: 2023/05/12 19:44:26 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/12 21:31:25 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,6 @@ void	textures(t_game *game)
 			&game->walls[3].endian);
 }
 
-void	init_tex(t_textures *tex)
-{
-	tex->nord = 0;
-	tex->sud = 0;
-	tex->ovest = 0;
-	tex->est = 0;
-}
-
 void	init_game(t_game *game)
 {	
 	game->mlx = mlx_init();
@@ -71,5 +63,4 @@ void	init_game(t_game *game)
 	game->minimap.map.addr = mlx_get_data_addr(game->minimap.map.img,
 			&game->minimap.map.bits_per_pixel, &game->minimap.map.line_length,
 			&game->minimap.map.endian);
-	init_tex(&game->tex);
 }
