@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+         #
+#    By: marco <marco@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/06 14:12:38 by marco             #+#    #+#              #
-#    Updated: 2023/05/09 16:03:13 by mpaterno         ###   ########.fr        #
+#    Updated: 2023/05/12 10:47:47 by marco            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= cub3D
 
-SRC			= $(wildcard get_next_line/*.c) $(wildcard parser/*.c) $(wildcard *.c)
+SRC			= $(wildcard get_next_line/*.c) $(wildcard parser/*.c) $(wildcard mlx_func/*.c) $(wildcard *.c) $(wildcard moves/*.c) $(wildcard ray/*.c) $(wildcard init/*.c)
 
 OBJ		= $(SRC:%.c=%.o)
 
@@ -32,6 +32,7 @@ $(NAME): $(OBJ)
 	@make -C mlx
 	@cp mlx/libmlx.dylib .
 	@$(CC) $(FLAGS) $(OBJ) $(MLX) -L ./libft -lft -o $(NAME)
+	#@$(CC) $(FLAGS) $(OBJ) -L ./libft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 	@printf "\r\033[KCUBE3D  CREATED  SUCCESSUFULLY\n$(RESET)"
 	@printf "$(BLUE)-------------------------------------------------------------------------\n$(RESET)"
 	@printf "  ██████╗██╗   ██╗██████╗ ██████╗ ██████╗ \n"
@@ -46,6 +47,7 @@ $(NAME): $(OBJ)
 
 %.o : %.c
 	@$(CC) $(FLAG) -Imlx -c $< -o $@
+	#@$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 all: $(NAME)
 

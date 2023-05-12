@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:39:41 by afraccal          #+#    #+#             */
-/*   Updated: 2023/05/10 10:14:41 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/12 10:48:03 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "../cube3D.h"
 
 // void	init_minimap(t_game *game)
 // {
@@ -37,5 +37,9 @@ void	init_game(t_game *game)
 {	
 	game->mlx = mlx_init();
 	game->mlx_win = mlx_new_window (game->mlx, WIDTH, HEIGHT, NAME);
+	game->data.img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
+	game->data.addr = mlx_get_data_addr(game->data.img,
+			&game->data.bits_per_pixel, &game->data.line_length,
+			&game->data.endian);
 	init_tex(&game->tex);
 }

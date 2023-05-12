@@ -65,3 +65,4 @@ int	find_texture(t_game *game, int fd)
 		return (-1);
 	return (0);
 }
+
