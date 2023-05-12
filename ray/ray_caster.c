@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_caster.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 11:18:39 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/10 11:23:59 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/12 11:43:44 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	raycaster_flat(t_game *game)
 		calculate_side_dist_and_step(game);
 		perform_dda(game);
 		get_line_size(game);
-		// draw_texture(game, x);
-		// draw_minimap_rays(game);
+		draw_line_on(&game->data, game->ray.draw_start,
+			game->ray.draw_end, 0x0000FF00);
 	}
 }

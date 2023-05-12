@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afraccal <afraccal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 11:35:17 by afraccal          #+#    #+#             */
-/*   Updated: 2023/05/10 11:51:13 by afraccal         ###   ########.fr       */
+/*   Updated: 2023/05/12 10:40:55 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ int	free_texture(t_textures *tex)
 	if (tex->ovest)
 		free(tex->ovest);
 	tex->ovest = NULL;
+	return (1);
 }
 
 int	free_map(t_map map)
 {
-	if (!&map)
+	if (!map.map)
 		return (1);
-	free_matrix (&map.map);
-	free (&map);
+	free_matrix (map.map);
 	return (1);
 }
 

@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+         #
+#    By: marco <marco@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/06 14:12:38 by marco             #+#    #+#              #
-#    Updated: 2023/05/10 11:29:20 by mpaterno         ###   ########.fr        #
+#    Updated: 2023/05/12 10:47:47 by marco            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= cub3D
 
-SRC			= $(wildcard get_next_line/*.c) $(wildcard parser/*.c) $(wildcard mlx_func/*.c) $(wildcard *.c)
+SRC			= $(wildcard get_next_line/*.c) $(wildcard parser/*.c) $(wildcard mlx_func/*.c) $(wildcard *.c) $(wildcard moves/*.c) $(wildcard ray/*.c) $(wildcard init/*.c)
 
 OBJ		= $(SRC:%.c=%.o)
 
