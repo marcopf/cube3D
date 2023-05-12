@@ -37,5 +37,9 @@ void	init_game(t_game *game)
 {	
 	game->mlx = mlx_init();
 	game->mlx_win = mlx_new_window (game->mlx, WIDTH, HEIGHT, NAME);
+	game->screen.img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
+	game->screen.addr = mlx_get_data_addr(game->screen.img,
+			&game->screen.bits_per_pixel, &game->screen.line_length,
+			&game->screen.endian);
 	init_tex(&game->tex);
 }
