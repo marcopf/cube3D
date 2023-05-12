@@ -6,11 +6,11 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 11:35:17 by afraccal          #+#    #+#             */
-/*   Updated: 2023/05/12 10:40:55 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/12 21:14:08 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "../cube3D.h"
 
 int	free_matrix(char **map)
 {
