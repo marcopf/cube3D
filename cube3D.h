@@ -6,7 +6,7 @@
 /*   By: afraccal <afraccal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
-/*   Updated: 2023/05/12 12:22:52 by afraccal         ###   ########.fr       */
+/*   Updated: 2023/05/12 13:10:21 by afraccal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,15 +118,15 @@ typedef struct s_game
 	int			width;
 	int			height;
 	double		frame_time;
-	int			wall_width[13];
-	int			wall_height[13];
+	int			wall_width[4];
+	int			wall_height[4];
 	t_textures	tex;
 	t_map		map;
 	t_minimap	minimap;
 	t_player	player;
 	t_raycast	ray;
 	t_data		data;
-	t_data		walls[13];
+	t_data		walls[4];
 	t_data		screen;
 }	t_game;
 

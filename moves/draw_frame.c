@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_frame.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afraccal <afraccal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 10:30:32 by marco             #+#    #+#             */
-/*   Updated: 2023/05/12 11:41:25 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/12 12:36:26 by afraccal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void	draw_background(t_game *game)
 	{
 		begin.y = y;
 		end.y = y;
-		draw_line_on(&game->data, begin, end, 0x00000000);
+		draw_line_on(&game->data, begin, end, RGB_BLUE);
 	}
 	y -= 1;
 	while (++y < HEIGHT)
 	{
 		begin.y = y;
 		end.y = y;
-		draw_line_on(&game->data, begin, end, 0x00000000);
+		draw_line_on(&game->data, begin, end, RGB_RED);
 	}
 }
 
