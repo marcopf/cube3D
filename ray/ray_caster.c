@@ -6,12 +6,17 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 11:18:39 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/12 16:42:59 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/14 22:38:19 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3D.h"
 
+/*
+void	init_raycast(t_game *game, int x)
+
+function that init the variable in other func
+*/
 void	init_raycast(t_game *game, int x)
 {
 	game->ray.camera_x = 2.0 * (double)x / (double)WIDTH - 1;
@@ -60,6 +65,12 @@ void	calculate_side_dist_and_step(t_game *game)
 	}
 }
 
+/*
+void	perform_dda(t_game *game)
+
+the actual func that calculate distance until a wall
+is reached...
+*/
 void	perform_dda(t_game *game)
 {
 	while (game->ray.hit == 0)
@@ -82,6 +93,12 @@ void	perform_dda(t_game *game)
 	}
 }
 
+/*
+void	get_line_size(t_game *game)
+
+final func that set "draw_start" and "draw_end" that will be later used
+to draw the actual view for th player
+*/
 void	get_line_size(t_game *game)
 {
 	if (game->ray.side == 0)
@@ -99,6 +116,14 @@ void	get_line_size(t_game *game)
 		game->ray.draw_end.y = HEIGHT - 1;
 }
 
+/*
+void	raycaster_flat(t_game *game)
+
+core func of the program, first of all set all the variable
+that will be used. Then starting from the player position the func
+start calculating the distance up until the next intersection until
+it reach a "wall"
+*/
 void	raycaster_flat(t_game *game)
 {
 	int		x;

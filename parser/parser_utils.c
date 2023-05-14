@@ -6,12 +6,18 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 22:26:29 by marco             #+#    #+#             */
-/*   Updated: 2023/05/14 21:03:50 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/14 22:51:14 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3D.h"
 
+/*
+int	get_map_line(char *path)
+
+auxiliar func for go_to_map return the line number where
+the map part begin
+*/
 int	get_map_line(char *path)
 {
 	char	*str;
@@ -37,6 +43,12 @@ int	get_map_line(char *path)
 	return (i);
 }
 
+/*
+int	go_to_map(char *path)
+
+simple func that open the path specified file and move it's index
+to the begining of the map
+*/
 int	go_to_map(char *path)
 {
 	int		line;
@@ -55,6 +67,12 @@ int	go_to_map(char *path)
 	return (fd);
 }
 
+/*
+int	arg_check(int argc, char **argv)
+
+this func check the arguments passed to the program and
+ensure that is no more than one and also that the extension is correct
+*/
 int	arg_check(int argc, char **argv)
 {
 	int	i;

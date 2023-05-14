@@ -6,12 +6,18 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:23:50 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/14 21:02:24 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/14 23:02:30 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3D.h"
 
+/*
+int	check_side(t_game *game, int x, int y)
+
+given a box in map this func check top-left top-right bottom-left bottom-right
+corner looking for 0 if found 0 is returned
+*/
 int	check_side(t_game *game, int x, int y)
 {
 	if (x + 1 < game->map.width
@@ -29,6 +35,12 @@ int	check_side(t_game *game, int x, int y)
 	return (1);
 }
 
+/*
+int	check_diag(t_game *game, int x, int y)
+
+given a box in map this func check one up one left one right one bottom
+looking for 0 if found 0 is returned
+*/
 int	check_diag(t_game *game, int x, int y)
 {
 	if ((x + 1 < game->map.width && y + 1 < game->map.height)
@@ -50,6 +62,14 @@ int	check_diag(t_game *game, int x, int y)
 	return (1);
 }
 
+/*
+int	space_check(t_game *game)
+
+looping trough each box of the map if a space is found
+this func call check_side and check_diag to check 
+the relative sorrounding boxes and if there is at least one 0
+return (-1)
+*/
 int	space_check(t_game *game)
 {
 	int	x;
@@ -70,6 +90,12 @@ int	space_check(t_game *game)
 	return (1);
 }
 
+/*
+int	border_check(t_game *game)
+
+this func check the first and last row plus the first and last
+column available to controll if there is a 1 or a 0
+*/
 int	border_check(t_game *game)
 {
 	int	y;

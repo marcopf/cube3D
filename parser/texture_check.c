@@ -6,12 +6,18 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 22:20:19 by marco             #+#    #+#             */
-/*   Updated: 2023/05/14 21:16:12 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/14 22:44:46 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3D.h"
 
+/*
+int	ft_access(char *path)
+
+a simple replace for acces unc that check if the file specified in path
+is valid and it exist
+*/
 int	ft_access(char *path)
 {
 	int	fd;
@@ -23,6 +29,12 @@ int	ft_access(char *path)
 	return (1);
 }
 
+/*
+int	check_path(t_game *game)
+
+this func check that all "NO || SO || WE || EA" path's
+are properly setted and is a valid and existing file
+*/
 int	check_path(t_game *game)
 {
 	if (!game->tex.nord || !ft_access(game->tex.nord))
@@ -36,6 +48,14 @@ int	check_path(t_game *game)
 	return (1);
 }
 
+
+/*
+int	find_texture(t_game *game, int fd)
+
+this func open a file and goes trough it's lines until it find
+the 2 specifiers characters "NO || SO || WE || EA" if so set
+the relative struct variable with the path of the disired file
+*/
 int	find_texture(t_game *game, int fd)
 {
 	char	*str;
