@@ -6,7 +6,7 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:39:41 by afraccal          #+#    #+#             */
-/*   Updated: 2023/05/12 21:31:25 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/14 21:21:18 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	textures(t_game *game)
 	game->walls[2].img = mlx_xpm_file_to_image(game->mlx,
 			game->tex.ovest, &(game->wall_heights[2]), &(game->wall_widths[2]));
 	game->walls[3].img = mlx_xpm_file_to_image(game->mlx,
-			game->tex.ovest, &(game->wall_heights[3]), &(game->wall_widths[3]));
+			game->tex.est, &(game->wall_heights[3]), &(game->wall_widths[3]));
 	game->walls[0].addr = mlx_get_data_addr(game->walls[0].img,
 			&game->walls[0].bits_per_pixel, &game->walls[0].line_length,
 			&game->walls[0].endian);

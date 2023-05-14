@@ -6,7 +6,7 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:30:21 by marco             #+#    #+#             */
-/*   Updated: 2023/05/12 20:32:27 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/14 21:28:08 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,16 @@ void	render_texture(t_game *game, int x)
 
 void	select_texture(t_game *game)
 {
-	if (game->ray.side == 1 && game->player.pos.y == game->ray.map_y)
+	if (game->ray.side == 1 && game->player.pos.y <= game->ray.map_y)
 		game->ray.color = 1;
-	if (game->ray.side == 1)
+	else if (game->ray.side == 1)
 		game->ray.color = 0;
-	if (game->ray.side == 0 && game->player.pos.y == game->ray.map_y)
+	else if (game->ray.side == 0 && game->player.pos.x <= game->ray.map_x)
 		game->ray.color = 2;
-	if (game->ray.side == 0)
+	else if (game->ray.side == 0)
 		game->ray.color = 3;
+	else
+		game->ray.color = 0;
 }
 
 void	draw_texture(t_game *game, int x)

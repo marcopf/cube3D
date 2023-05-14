@@ -6,7 +6,7 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:23:50 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/09 22:29:17 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/14 21:02:24 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ int	space_check(t_game *game)
 int	border_check(t_game *game)
 {
 	int	y;
-	int	x;
 
 	y = -1;
 	while (game->map.map[++y])

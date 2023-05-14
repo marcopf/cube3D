@@ -1,10 +1,20 @@
-NO ./maps/nord.xpm
-SO ./maps/sud.xpm
-WE ./maps/est.xpm
-EA ./maps/est.xpm
+NO                  ./maps/nord.xpm
+SO         ./maps/sud.xpm
+WE ./maps/ovest.xpm
+EA                  ./maps/est.xpm
 
-C 135,206,235
-F 133,94,66
+
+
+
+
+C       135,206,235
+F      133,94,66
+
+
+
+
+
+
 
 1111111111111111111      
 1000000000101101011      

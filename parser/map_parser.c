@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:54:52 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/10 10:54:15 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/14 21:06:57 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	map_converter(t_game *game, char *path, int fd)
 
 	i = 0;
 	y = count_line(game, fd);
-	fd = go_to_map(game, path);
+	fd = go_to_map(path);
 	game->map.map = (char **)malloc(sizeof(char *) * (y + 1));
 	temp_gnl = get_next_line(fd);
 	game->map.map[i] = ft_strtrim(temp_gnl, "\n");
@@ -67,7 +67,7 @@ int	parse_map(t_game *game, char *path)
 	if (find_colors(game, fd) == -1)
 		return (-1);
 	close(fd);
-	map_converter(game, path, go_to_map(game, path));
+	map_converter(game, path, go_to_map(path));
 	if (border_check(game))
 		return (-1);
 	return (0);

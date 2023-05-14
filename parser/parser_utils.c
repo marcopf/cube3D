@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 22:26:29 by marco             #+#    #+#             */
-/*   Updated: 2023/05/10 09:15:49 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/14 21:03:50 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3D.h"
 
-int	get_map_line(t_game *game, char *path)
+int	get_map_line(char *path)
 {
 	char	*str;
 	int		i;
@@ -37,7 +37,7 @@ int	get_map_line(t_game *game, char *path)
 	return (i);
 }
 
-int	go_to_map(t_game *game, char *path)
+int	go_to_map(char *path)
 {
 	int		line;
 	int		i;
@@ -46,7 +46,7 @@ int	go_to_map(t_game *game, char *path)
 
 	fd = open(path, O_RDONLY);
 	i = -1;
-	line = get_map_line(game, path);
+	line = get_map_line(path);
 	while (++i < line - 1)
 	{
 		str = get_next_line(fd);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.c                                          :+:      :+:    :+:   */
+/*   texture_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 22:20:19 by marco             #+#    #+#             */
-/*   Updated: 2023/05/10 10:58:55 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/14 21:16:12 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	ft_access(char *path)
 
 int	check_path(t_game *game)
 {
-	int	fd;
-
 	if (!game->tex.nord || !ft_access(game->tex.nord))
 		return (0);
 	if (!game->tex.sud || !ft_access(game->tex.sud))
@@ -50,13 +48,13 @@ int	find_texture(t_game *game, int fd)
 	while (counter < 4 && str)
 	{
 		if (ft_strncmp(str, "NO", 2) == 0 && ++counter)
-			game->tex.nord = ft_strtrim(str + 3, "\n");
+			game->tex.nord = ft_strtrim(str + 2, "\n ");
 		else if (ft_strncmp(str, "SO", 2) == 0 && ++counter)
-			game->tex.sud = ft_strtrim(str + 3, "\n");
+			game->tex.sud = ft_strtrim(str + 2, "\n ");
 		else if (ft_strncmp(str, "WE", 2) == 0 && ++counter)
-			game->tex.ovest = ft_strtrim(str + 3, "\n");
+			game->tex.ovest = ft_strtrim(str + 2, "\n ");
 		else if (ft_strncmp(str, "EA", 2) == 0 && ++counter)
-			game->tex.est = ft_strtrim(str + 3, "\n");
+			game->tex.est = ft_strtrim(str + 2, "\n ");
 		free(str);
 		str = get_next_line(fd);
 	}
@@ -65,4 +63,3 @@ int	find_texture(t_game *game, int fd)
 		return (-1);
 	return (0);
 }
-

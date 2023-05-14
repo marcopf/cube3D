@@ -6,13 +6,13 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 10:51:03 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/12 15:18:44 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/14 21:16:01 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3D.h"
 
-int	col_cycle(t_game *game, int *col, char **colors)
+int	col_cycle(int *col, char **colors)
 {
 	int	val;
 	int	i;
@@ -28,20 +28,24 @@ int	col_cycle(t_game *game, int *col, char **colors)
 	return (0);
 }
 
-int	assign_color(t_game *game, char c, char **colors)
+int	assign_color(t_game *game, char c, char *color)
 {
-	int	i;
-	int	val;
+	int		i;
+	char	*str;
+	char	**colors;
 
+	str = ft_strtrim(color, " ");
+	colors = ft_split(str, ',');
+	free(str);
 	i = -1;
 	if (c == 'C')
 	{
-		if (col_cycle(game, game->tex.ceilling, colors) == -1)
+		if (col_cycle(game->tex.ceilling, colors) == -1)
 			return (-1);
 	}
 	else if (c == 'F')
 	{
-		if (col_cycle(game, game->tex.floor, colors) == -1)
+		if (col_cycle(game->tex.floor, colors) == -1)
 			return (-1);
 	}
 	i = -1;
@@ -62,12 +66,12 @@ int	find_colors(t_game *game, int fd)
 	{
 		if (ft_strncmp(str, "F", 1) == 0 && ++counter)
 		{
-			if (assign_color(game, 'F', ft_split(str + 2, ',')))
+			if (assign_color(game, 'F', str + 1))
 				return (-1);
 		}
 		else if (ft_strncmp(str, "C", 1) == 0 && ++counter)
 		{
-			if (assign_color(game, 'C', ft_split(str + 2, ',')))
+			if (assign_color(game, 'C', str + 1))
 				return (-1);
 		}
 		free(str);
