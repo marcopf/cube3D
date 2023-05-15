@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_frame.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 10:30:32 by marco             #+#    #+#             */
-/*   Updated: 2023/05/12 16:43:50 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/15 11:26:26 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,6 @@ void	draw_minimap(t_game *game)
 
 int	draw_frame(t_game *game)
 {
-	t_vector	start;
-
-	start.x = 0;
-	start.y = 0;
 	mlx_clear_window(game->mlx, game->mlx_win);
 	draw_minimap(game);
 	draw_background(game);
@@ -78,5 +74,6 @@ int	draw_frame(t_game *game)
 	mlx_put_image_to_window(game->mlx, game->mlx_win,
 		game->minimap.map.img, 0, 0);
 	update_inputs(game);
+	usleep(8000);
 	return (0);
 }

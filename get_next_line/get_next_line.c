@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:17:14 by mpaterno          #+#    #+#             */
-/*   Updated: 2023/05/09 21:29:27 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/15 09:27:53 by mpaterno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*print_remain(char	*str)
 		i++;
 	ret = (char *) malloc((i + 2) * sizeof(char));
 	ft_strlcpy(ret, str, i + 2);
-	if (ft_strchr(str, '\n') > 0)
+	if (ft_strchr(str, '\n') != 0)
 		ft_strlcpy(str, new_buff, ft_strlen(new_buff) + 1);
 	else
 	{

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marco <marco@student.42.fr>                +#+  +:+       +#+         #
+#    By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/06 14:12:38 by marco             #+#    #+#              #
-#    Updated: 2023/05/14 20:47:33 by marco            ###   ########.fr        #
+#    Updated: 2023/05/15 13:36:51 by mpaterno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJ		= $(SRC:%.c=%.o)
 
 CC		= gcc
 FLAGS	= -Wall -Wextra -Werror
-MLX		= -L . -lmlx -framework OpenGL -framework AppKit
+MLX		= -L ./mlx_mac -lmlx
 RM		= rm -f
 
 RED		= \033[0;31m
@@ -29,10 +29,13 @@ RESET	= \033[0;0m
 
 $(NAME): $(OBJ)
 	@make -C libft
-	@make -C mlx
-	@cp mlx/libmlx.dylib .
+ifeq ($(shell uname), Linux)
+	@make -C mlx_linux
+	$(CC) $(FLAGS) $(OBJ) -L ./libft -lft -L ./mlx_linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
+else
+	@make -C mlx_mac
 	@$(CC) $(FLAGS) $(OBJ) $(MLX) -L ./libft -lft -o $(NAME)
-	#@$(CC) $(FLAGS) $(OBJ) -L ./libft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+endif
 	@printf "\r\033[KCUBE3D  CREATED  SUCCESSUFULLY\n$(RESET)"
 	@printf "$(BLUE)-------------------------------------------------------------------------\n$(RESET)"
 	@printf "  ██████╗██╗   ██╗██████╗ ██████╗ ██████╗ \n"
@@ -46,8 +49,12 @@ $(NAME): $(OBJ)
 	@printf "$(BLUE)-------------------------------------------------------------------------\n$(RESET)"
 
 %.o : %.c
-	@$(CC) $(FLAGS) -Imlx -c $< -o $@
-	#@$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
+ifeq ($(shell uname),Linux)
+	$(CC) -Wall -Wextra -Werror -I/usr/include -Imxl_linux -O3 -c $< -o $@
+else
+	@$(CC) $(FLAGS) -Imlx_mac -c $< -o $@
+endif
+		
 
 all: $(NAME)
 
@@ -55,7 +62,11 @@ linux: $(OBJ)
 	$(CC) -fsanitize=address $(OBJ) $(RDLN_L) -o $(NAME)
 
 clean:
-	@make -C mlx clean
+ifeq ($(shell uname), Linux)
+	@make -C mlx_linux clean
+else
+	@make -C mlx_mac clean
+endif
 	@make -C libft clean
 	@printf "$(RED)\nRemoving Object files...\n$(RESET)"
 	@printf "$(BLUE)-------------------------------------------------------------------------\n$(RESET)"
@@ -64,7 +75,6 @@ clean:
 	
 fclean: clean
 	@make -C libft fclean
-	@rm -f libmlx.dylib
 	@printf "$(RED)\nRemoving program executable...\n$(RESET)"
 	@printf "$(BLUE)-------------------------------------------------------------------------\n$(RESET)"
 	@$(RM) $(NAME)
