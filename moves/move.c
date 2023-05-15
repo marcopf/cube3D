@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 10:18:59 by marco             #+#    #+#             */
-/*   Updated: 2023/05/15 11:27:34 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/15 20:41:23 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3D.h"
 
+/*
+int	input_on_press(int key, t_game *game)
+
+just elaborates the input as soon as the key is pressed
+if the esc key is pressed the game is closed
+*/
 int	input_on_press(int key, t_game *game)
 {
 	if (key == 0 || key == 'a')
@@ -31,6 +37,11 @@ int	input_on_press(int key, t_game *game)
 	return (0);
 }
 
+/*
+int	input_on_release(int key, t_game *game)
+
+just elaborated the input as soon the key is released 
+*/
 int	input_on_release(int key, t_game *game)
 {
 	if (key == 13 || key == 1 || key == 'w' || key == 's')

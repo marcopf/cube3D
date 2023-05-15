@@ -6,7 +6,7 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:30:21 by marco             #+#    #+#             */
-/*   Updated: 2023/05/14 21:28:08 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/15 20:33:45 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ int	get_texture_x(t_game *game)
 	return (tex_x);
 }
 
+/*
+void	render_texture(t_game *game, int x)
+
+draw the texture on the mlx_image minding the distance from the
+player position to porperly scale the image
+*/
 void	render_texture(t_game *game, int x)
 {
 	t_vector		tex;
@@ -55,6 +61,12 @@ void	render_texture(t_game *game, int x)
 	}
 }
 
+/*
+void	select_texture(t_game *game)
+
+prepare the value of game->ray.color depending on the player position
+to be later used from render_texture or in texture-less version
+*/
 void	select_texture(t_game *game)
 {
 	if (game->ray.side == 1 && game->player.pos.y <= game->ray.map_y)
@@ -69,12 +81,19 @@ void	select_texture(t_game *game)
 		game->ray.color = 0;
 }
 
+
+/*
+void	draw_texture(t_game *game, int x)
+
+choose to render the game with or without texture depending on
+the WITH_TEXTURE value
+*/
 void	draw_texture(t_game *game, int x)
 {
 	int	colors[4];
 
 	select_texture(game);
-	if (1)
+	if (WITH_TEXTURE)
 		render_texture(game, x);
 	else
 	{

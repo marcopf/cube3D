@@ -6,23 +6,33 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 10:23:38 by marco             #+#    #+#             */
-/*   Updated: 2023/05/12 11:41:30 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/15 20:47:54 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3D.h"
 
+/*
+int	is_colliding(t_game *game, double y, double x)
+
+the actual func that check if the collision is happening
+*/
 int	is_colliding(t_game *game, double y, double x)
 {
 	if (game->map.map[(int)y][(int)x] == '0')
 		return (0);
 	if (game->map.map[(int)y][(int)x] == 'O')
 		return (0);
-	if (game->map.map[(int)y][(int)x] == 'D')
-		return (0);
 	return (1);
 }
 
+/*
+void	update_dir_x(t_game *game)
+
+this func is constantly checking if the move that the player is about to do
+will collide with a wall and if that is not the case it will update the position
+special for x axes
+*/
 void	update_dir_x(t_game *game)
 {
 	if (game->player.mov_dir.x == -1)
@@ -45,6 +55,13 @@ void	update_dir_x(t_game *game)
 	}
 }
 
+/*
+void	update_dir_y(t_game *game)
+
+this func is constantly checking if the move that the player is about to do
+will collide with a wall and if that is not the case it will update the position
+special for y axes
+*/
 void	update_dir_y(t_game *game)
 {
 	if (game->player.mov_dir.y == 1)
@@ -67,6 +84,13 @@ void	update_dir_y(t_game *game)
 	}
 }
 
+/*
+void	update_rot(t_game *game)
+
+this func is constantly checking if the move that the player is about to do
+will collide with a wall and if that is not the case it will update the position
+special for rotation
+*/
 void	update_rot(t_game *game)
 {
 	double	old_dir_x;
@@ -94,6 +118,13 @@ void	update_rot(t_game *game)
 	}
 }
 
+/*
+void	update_inputs(t_game *game)
+
+this func is constantly checking if the move that the player is about to do
+will collide with a wall and if that is not the case it will update the position
+or rotation if necessary
+*/
 void	update_inputs(t_game *game)
 {
 	game->player.mov_speed.x = 0.02 * SPEED;

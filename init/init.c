@@ -6,24 +6,11 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:39:41 by afraccal          #+#    #+#             */
-/*   Updated: 2023/05/14 21:21:18 by marco            ###   ########.fr       */
+/*   Updated: 2023/05/15 20:57:38 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3D.h"
-
-// void	init_minimap(t_game *game)
-// {
-// 	game->minimap.width = game->map.width;
-// 	game->minimap.height = game->map.height;
-// 	game->minimap.x = WIDTH - game->minimap.width;
-// 	game->minimap.y = 1;
-// 	game->minimap.map.img = mlx_new_image(game->mlx, game->minimap.width,
-// 			game->minimap.height);
-// 	game->minimap.map.addr = mlx_get_data_addr(game->minimap.map.img,
-// 			&game->minimap.map.bits_per_pixel, &game->minimap.map.line_length,
-// 			&game->minimap.map.endian);
-// }
 
 void	textures(t_game *game)
 {
@@ -49,6 +36,11 @@ void	textures(t_game *game)
 			&game->walls[3].endian);
 }
 
+/*
+void	init_game(t_game *game)
+
+init most of the game struct variable
+*/
 void	init_game(t_game *game)
 {	
 	game->mlx = mlx_init();

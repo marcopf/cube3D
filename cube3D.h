@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3D.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:18:53 by marco             #+#    #+#             */
-/*   Updated: 2023/05/15 13:25:46 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/15 20:21:16 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define RGB_DARK_GREY 0x00282828
 
 # define NAME "cub3D"
+# define WITH_TEXTURE 1
 # define PLAYER_CHARACTERS "NSWE"
 # define WIDTH 1280
 # define HEIGHT 720

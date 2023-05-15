@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   draw_frame.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 10:30:32 by marco             #+#    #+#             */
-/*   Updated: 2023/05/15 11:26:26 by mpaterno         ###   ########.fr       */
+/*   Updated: 2023/05/15 20:56:17 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3D.h"
 
+/*
+void	draw_background(t_game *game)
+
+draw the ceilling and floor accordingly to the .cub specified value
+*/
 void	draw_background(t_game *game)
 {
 	t_vector	begin;
@@ -39,6 +44,13 @@ void	draw_background(t_game *game)
 	}
 }
 
+/*
+void	draw_minimap(t_game *game)
+
+function that given a char ** map covert it to a minimap
+where each box is converted to a 10x10(pixel) block and
+then using game->player.pos.x/y the playes is drawn
+*/
 void	draw_minimap(t_game *game)
 {
 	int			x;
@@ -64,6 +76,12 @@ void	draw_minimap(t_game *game)
 	draw_square(&game->minimap.map, start, 5, 0x00FF0000);
 }
 
+/*
+int	draw_frame(t_game *game)
+
+draw each frame of the game using different function to draw different
+part of the view then a usleep is placed to limit the fps
+*/
 int	draw_frame(t_game *game)
 {
 	mlx_clear_window(game->mlx, game->mlx_win);
