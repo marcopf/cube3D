@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mpaterno <mpaterno@student.42.fr>          +#+  +:+       +#+         #
+#    By: marco <marco@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/06 14:12:38 by marco             #+#    #+#              #
-#    Updated: 2023/05/15 13:36:51 by mpaterno         ###   ########.fr        #
+#    Updated: 2023/05/15 14:01:42 by marco            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ ifeq ($(shell uname), Linux)
 	$(CC) $(FLAGS) $(OBJ) -L ./libft -lft -L ./mlx_linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
 else
 	@make -C mlx_mac
+	@cp mlx_mac/libmlx.dylib .
 	@$(CC) $(FLAGS) $(OBJ) $(MLX) -L ./libft -lft -o $(NAME)
 endif
 	@printf "\r\033[KCUBE3D  CREATED  SUCCESSUFULLY\n$(RESET)"
@@ -66,6 +67,7 @@ ifeq ($(shell uname), Linux)
 	@make -C mlx_linux clean
 else
 	@make -C mlx_mac clean
+	@rm -rf libmlx.dylib
 endif
 	@make -C libft clean
 	@printf "$(RED)\nRemoving Object files...\n$(RESET)"
